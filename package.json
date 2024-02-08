@@ -1,0 +1,16 @@
+{
+  "name": "edp-capstone",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Send username to backend\r     GET Route: /api/authentication/login/[user_id] \r     Server: \r         Checks to see if user is in db\r         Sends back user, messages threads",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch Server/main_server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.3.0"
+  }
+}

@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+    <BrowserRouter>
     <div className='App'>
         <BrowserRouter>
         <Routes>
@@ -17,6 +18,7 @@ function App() {
         </Routes>
         </BrowserRouter>
     </div>
+    </BrowserRouter>
   )
 }
 

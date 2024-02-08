@@ -10,7 +10,7 @@ const LoginForm = () => {
 
     try {
       // Send GET request to fetch user data based on username
-      const response = await fetch('/api/authentication/login');
+      const response = await fetch(`/api/authentication/login/${username}/${password}`);
       const userData = await response.json();
 
       console.log(userData)

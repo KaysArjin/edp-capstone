@@ -28,8 +28,12 @@ const RegistrationForm = () => {
       });
 
       // Check if request was successful
-      if (!response.ok) {
-        throw new Error('Failed to register');
+      if (response.status == 401) {
+        throw new Error('user already exists, pick a different username');
+      }else{
+        if (!response.ok){
+          throw new Error('Register failed')
+        }
       }
 
       // Clear form fields and error message on successful registration

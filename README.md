@@ -16,23 +16,23 @@ Send username to backend
         Respond with 401 unauthorized
         create new document in db with user_id, messages threads (empty) 
 
-### Messaging system: 
+## Messaging system: 
 Messages are stored with a message_id, sender_id, recipient_id, message contents. They will send back this information as well. 
 
-Send message: 
+### Send message: 
     POST Route: /api/message/[sender_id]/[recipient_id]/[anonymous]
     if anonymous is true, sender_id is -1
     will return 400 bad request if recipient_do
 
-Reply to message: 
+### Reply to message: 
     PUT Route: /api/message/[sender_id]/[recipient_id]/[message_id]
     Returns the updated message thread... 
 
-Get messages: 
+### Get messages: 
     GET Route: /api/message/[sender] 
     Returns all message_threads
 
-Close message thread: 
+### Close message thread: 
     PUT Route: /api/message/remove/[manager_id]/[user_id]/[message_id] 
 
 ### Navigation: 

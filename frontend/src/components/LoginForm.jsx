@@ -6,20 +6,20 @@ const LoginForm = () => {
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
-    //preventDefault prevents the form from actually submitting, giving a chance to validate
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/authentication/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      // Send GET request to fetch user data based on username
+      const response = await fetch('/api/authentication/login');
+      const userData = await response.json();
 
       if (!response.ok) {
-        throw new Error('Failed to login');
+        throw new Error('User not found');
+      }
+
+      // Check if password matches the one stored in the database
+      if (password !== userData.password) {
+        throw new Error('Incorrect password');
       }
 
       // Clear form fields and error message on successful login

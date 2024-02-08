@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LandingPage from './pages/LandingPage';
 import Header from './components/Header';
@@ -11,15 +11,13 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className='App'>
-        <BrowserRouter>
+    <div className='App'>       
         <Routes>
             <Route
                 path='/'
                 element={<HomePage />}
             />
-        </Routes>
-        </BrowserRouter>
+        </Routes>       
     </div>
     </BrowserRouter>
   )

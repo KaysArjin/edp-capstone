@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
-const MessageCard = ({ userId }) => {
+const MessageCard = ({ user_id }) => {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
     const fetchMessage = async () => {
       try {
         // Fetch message from the backend API based on userId
-        const response = await fetch(`/api/messages/${userId}`);
+        const response = await fetch(`/api/messages/${user_id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch message');
         }
@@ -21,14 +21,14 @@ const MessageCard = ({ userId }) => {
     };
 
     fetchMessage();
-  }, [userId]);
+  }, [user_id]);
 
   return (
     <div>
       {message && (
         <Card>
           <CardBody>
-            <CardTitle>Message from {message.userId}</CardTitle>
+            <CardTitle>Message from {message.user_id}</CardTitle>
             <CardText>{message.content}</CardText>
           </CardBody>
         </Card>

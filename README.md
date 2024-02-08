@@ -1,8 +1,40 @@
-# React + Vite
+# Backend port: 3500
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Authentication Prompt: 
+### Login: 
+Send username to backend
+    GET Route: /api/authentication/login/[user_id] 
+    Server: 
+        Checks to see if user is in db
+        Sends back user, messages threads
 
-Currently, two official plugins are available:
+### Register: 
+Send username to backend
+    POST Route: /api/authentication/register/[user_id] 
+    Server: 
+        Check if username already exists
+        Respond with 401 unauthorized
+        create new document in db with user_id, messages threads (empty) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Messaging system: 
+Messages are stored with a message_id, sender_id, recipient_id, message contents. They will send back this information as well. 
+
+Send message: 
+    POST Route: /api/message/[sender_id]/[recipient_id]/[anonymous]
+    if anonymous is true, sender_id is -1
+    will return 400 bad request if recipient_do
+
+Reply to message: 
+    PUT Route: /api/message/[sender_id]/[recipient_id]/[message_id]
+    Returns the updated message thread... 
+
+Get messages: 
+    GET Route: /api/message/[sender] 
+    Returns all message_threads
+
+Close message thread: 
+    PUT Route: /api/message/remove/[manager_id]/[user_id]/[message_id] 
+
+### Navigation: 
+Login page: 
+Message/Homepage: 

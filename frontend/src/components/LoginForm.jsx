@@ -1,16 +1,34 @@
 import React, { useState } from 'react';
 
-const LoginForm = ({ onLogin }) => {
-  // Define state variables for username and password
+const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    //preventDefault prevents the form from actually submitting, giving a chance to validate
     e.preventDefault();
-    // Call onLogin function passed as a prop with username and password
-    // For simplicity, assume validation is done on backend
-    onLogin({ username, password });
+
+    try {
+      const response = await fetch('/api/authentication/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to login');
+      }
+
+      // Clear form fields and error message on successful login
+      setUsername('');
+      setPassword('');
+      setError(null);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (

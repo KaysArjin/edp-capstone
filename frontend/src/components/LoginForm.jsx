@@ -22,6 +22,8 @@ const LoginForm = () => {
 
       const userData = await response.json();
       // Check if password matches the one stored in the database
+
+      console.log(userData)
       
 
       // Clear form fields and error message on successful login

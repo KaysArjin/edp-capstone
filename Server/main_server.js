@@ -103,7 +103,7 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
   const user_collection = db.collection('users');
   const messages_collection = db.collection('messages');
 
-  const n_id = [pars.sender_id, pars.reciever_id, pars.anonymous.toString()].sort().join("-")
+  const n_id = [[pars.sender_id, pars.reciever_id].sort().join("-"),[pars.anonymous]]
   console.log(n_id)
 
   const message_exsts = await messages_collection.findOne({ "msg_id": n_id });
@@ -116,7 +116,8 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
 
     //console.log(reciever)
     //console.log(sender)
-    const n_id = [pars.sender_id, pars.reciever_id, pars.anonymous.toString()].sort().join("-");
+    const n_id =  [[pars.sender_id, pars.reciever_id].sort().join("-"),[pars.anonymous]]
+    console.log(n_id)
 
      const reciever1 = await user_collection.updateOne(
       { 'user_id': pars.reciever_id }, 

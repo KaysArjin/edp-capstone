@@ -29,7 +29,7 @@ Messages are stored with a message_id, sender_id, recipient_id, message contents
     Returns the updated message thread... 
 
 ### Get messages: 
-    GET Route: /api/message/[sender] 
+    GET Route: /api/message/[sender]
     Returns all message_threads
 
 ### Close message thread: 
@@ -38,3 +38,19 @@ Messages are stored with a message_id, sender_id, recipient_id, message contents
 ### Navigation: 
 Login page 
 Message/Homepage 
+
+
+## Mongo start up instruction: 
+open a cmd prompt
+cd C:\MongoDB\Server\6.0\bin 
+mongod {enter}
+
+open new cmd prompt 
+cd C:\Software\mongosh\mongosh-1.8.0-win32-x64\bin
+mongosh {enter}
+
+
+in a cmd prompt 
+mongoimport --db user_messages --collection users --file message_documents.json --jsonArray
+
+mongoimport --db user_messages --collection messages --file message_documents.json --jsonArray

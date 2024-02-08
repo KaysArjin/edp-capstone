@@ -1,0 +1,10 @@
+[    
+    {
+        "user_id": "person1",
+        "message_lst": []
+    }, 
+    {
+        "user_id": "person2",
+        "message_lst": []
+    }
+]

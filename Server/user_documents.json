@@ -6,5 +6,9 @@
     {
         "user_id": "person2",
         "message_lst": []
+    }, 
+    {
+        "user_id": "person3",
+        "message_lst": ["message_lst_1"]
     }
 ]

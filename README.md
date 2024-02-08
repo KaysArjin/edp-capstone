@@ -51,6 +51,6 @@ mongosh {enter}
 
 
 in a cmd prompt 
-mongoimport --db user_messages --collection users --file message_documents.json --jsonArray
+mongoimport --db user_messages --collection users --file user_documents.json --jsonArray
 
 mongoimport --db user_messages --collection messages --file message_documents.json --jsonArray

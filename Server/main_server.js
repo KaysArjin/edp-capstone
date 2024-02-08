@@ -9,6 +9,9 @@ const db = 'user_messages';
 
 //const user_collection = db.collection('users');
 //const messages_collection = db.collection('messages');
+
+
+//USER AUTHENTICATION
 app.post("/api/authentication/register", async (req, res) => {
   //info is sent in the body
   const id = req.body;
@@ -16,7 +19,6 @@ app.post("/api/authentication/register", async (req, res) => {
   const client = await MongoClient.connect(url);
   const db = client.db('user_messages');
   const user_collection = db.collection('users');
-  const messages_collection = db.collection('messages');
   const users = await user_collection.findOne({ 'user_id': id.username });
 
   if (!users) {
@@ -40,10 +42,20 @@ app.post("/api/authentication/register", async (req, res) => {
 
 app.get("/api/authentication/login", async (req, res) => {
   //info is sent in the body
-  console.log("in get login")
+  const id = req.body;
+  console.log(id)
+
+  const client = await MongoClient.connect(url);
+  const db = client.db('user_messages');
+  const user_collection = db.collection('users');
+  const users = await user_collection.findOne({ 'user_id': id.username, 'pass':id.password });
+
   res.send(200)
 });
 
+
+
+//MESSAGE GETTING AND SETTING
 app.get("/api/message/:sender_id", async (req, res) => {
   // res.send(people);
   const id = req.params.sender_id;
@@ -66,6 +78,34 @@ app.get("/api/message/:sender_id", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error });
   }
+});
+
+//expects 3 params (sender_id, reciever_id, and anonymous) and 1 body
+app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req,res) =>{
+  const pars = req.params; 
+  const message = req.body.message; 
+
+  try {
+    const client = await MongoClient.connect(url);
+    const db = client.db('user_messages');
+    const user_collection = db.collection('users');
+    const messages_collection = db.collection('messages');
+    const users = await user_collection.findOne({ 'user_id': id });
+    //create new message, id is the sender_id + user_id
+    n_id = [pars.sender_id, pars.reciever_id,pars.anonymous.toString()].sort().join("-")
+    console.log(n_id)
+
+
+
+
+
+
+    client.close();
+    
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+
 });
 
 //const people = await collection.find().toArray();

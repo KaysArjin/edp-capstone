@@ -1,15 +1,17 @@
 import { Container } from "reactstrap";
 import LoginForm from "../components/LoginForm";
 import RegistrationForm from "../components/RegistrationForm";
-import SubHeader from "../components/SubHeader";
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 
 const HomePage = () => {
     return (
         <Container>
-            <SubHeader current='Home' />
+            <Header />
             <LoginForm />
             <RegistrationForm />
+            <Footer />
         </Container>
     )
 };

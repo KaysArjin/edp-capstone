@@ -36,5 +36,5 @@ Messages are stored with a message_id, sender_id, recipient_id, message contents
     PUT Route: /api/message/remove/[manager_id]/[user_id]/[message_id] 
 
 ### Navigation: 
-Login page: 
-Message/Homepage: 
+Login page 
+Message/Homepage 

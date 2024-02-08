@@ -13,6 +13,8 @@ const LoginForm = () => {
       const response = await fetch('/api/authentication/login');
       const userData = await response.json();
 
+      console.log(userData)
+
       if (!response.ok) {
         throw new Error('User not found');
       }

@@ -11,24 +11,25 @@ const LoginForm = () => {
     try {
       // Send GET request to fetch user data based on username
       const response = await fetch(`/api/authentication/login/${username}/${password}`);
-      const userData = await response.json();
+      
 
-      console.log(userData)
+      console.log(response)
+      console.log("here")
 
       if (!response.ok) {
-        throw new Error('User not found');
+        throw new Error('Login Credentials Incorrect');
       }
 
+      const userData = await response.json();
       // Check if password matches the one stored in the database
-      if (password !== userData.password) {
-        throw new Error('Incorrect password');
-      }
+      
 
       // Clear form fields and error message on successful login
       setUsername('');
       setPassword('');
       setError(null);
     } catch (error) {
+      console.log(error)
       setError(error.message);
     }
   };

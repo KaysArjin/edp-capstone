@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 import { 
     Navbar, 
     NavbarBrand,
@@ -15,8 +17,9 @@ const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-<Navbar dark color='primary' sticky='top' expand='md'>
-            <Container fluid>
+        <Navbar dark color='primary' sticky='top' expand='md'>
+            {/* <Container fluid> */}
+            <div className='container-fluid'>
                 <NavbarBrand href='/' className='ms-3'>
                     <img src={CodeBloodedLogo} alt='code blooded logo' className='me-2' style={{ maxWidth: '50px' }} />
                     Employee Feedback Portal
@@ -46,7 +49,8 @@ const Header = () => {
                         </NavItem>
                     </Nav>
                 </Collapse>
-            </Container>
+            </div>
+            {/* </Container> */}
         </Navbar>
     );
 };

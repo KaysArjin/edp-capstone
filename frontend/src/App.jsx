@@ -10,11 +10,9 @@ function App() {
   const [count, setCount] = useState(0)
   const [username, setUsername] = useState("")
 
-  const handleUsername = (p) => {setUsername(p)};
+  const handleUsername = (u) => {setUsername(u)}; 
 
-  console.log()
-
-  console.log(password)
+  console.log(username)
 
   return (
     <BrowserRouter>

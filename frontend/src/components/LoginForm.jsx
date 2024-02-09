@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const LoginForm = ({username, handleUsername}) => {
-
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+
+
+  useEffect(() => handleUsername("input"), []);
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,7 +15,6 @@ const LoginForm = ({username, handleUsername}) => {
     try {
       // Send GET request to fetch user data based on username
       const response = await fetch(`/api/authentication/login/${username}/${password}`);
-      
 
       console.log(response)
       console.log("here")

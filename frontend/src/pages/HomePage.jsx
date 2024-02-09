@@ -7,12 +7,12 @@ import { useEffect } from "react";
 
 
 const HomePage = ({username, handleUsername}) => {
-    useEffect(() => handleUsername("hello"),[])
+    //useEffect(() => handleUsername("hello"),[]) 
     
     return (
         <Container>
-            <Header username = {username} handleUsername = {handleUsername} />
-            <LoginForm />
+            <Header />
+            <LoginForm  username = {username} handleUsername = {handleUsername}/>
             <RegistrationForm />
             <Footer />
         </Container>

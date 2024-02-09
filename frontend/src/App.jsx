@@ -16,7 +16,7 @@ function App() {
         <Routes>
             <Route
                 path='/'
-                element={<HomePage />}
+                element={<HomePage password = {(p) => {setPassword(p)}}/>}
             />
             <Route
                 path='/landingpage'

@@ -3,8 +3,8 @@ import './App.css'
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LandingPage from './pages/LandingPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import OrgChartPage from './pages/OrgChartPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +16,18 @@ function App() {
             <Route
                 path='/'
                 element={<HomePage />}
+            />
+            <Route
+                path='/landingpage'
+                element={<LandingPage />}
+            />
+            <Route
+                path='/orgchartpage'
+                element={<OrgChartPage />}
+            />
+            <Route
+                path='/orgchartpage'
+                element={<ContactPage />}
             />
         </Routes>       
     </div>

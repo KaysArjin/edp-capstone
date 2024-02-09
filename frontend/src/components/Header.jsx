@@ -30,13 +30,13 @@ const Header = () => {
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className='nav-link' to='/directory'>
-                                <i className='fa fa-list fa-lg' /> Directory
+                            <NavLink className='nav-link' to='/landingpage'>
+                                <i className='fa fa-list fa-lg' /> Message Board
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className='nav-link' to='/about'>
-                                <i className='fa fa-info fa-lg' /> About
+                            <NavLink className='nav-link' to='/orgchartpage'>
+                                <i className='fa fa--circle-info fa-lg' /> Org Chart
                             </NavLink>
                         </NavItem>
                         <NavItem>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const LoginForm = () => {
-  const [username, setUsername] = useState('');
+const LoginForm = ({username, handleUsername}) => {
+
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
@@ -27,7 +27,6 @@ const LoginForm = () => {
       
 
       // Clear form fields and error message on successful login
-      setUsername('');
       setPassword('');
       setError(null);
     } catch (error) {

@@ -10,7 +10,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [password, setPassword] = useState("")
 
-  const handlePassword = (p) => {setPassword(p)};
+  const handleUsername = (p) => {setPassword(p)};
 
   console.log(password)
 
@@ -20,7 +20,7 @@ function App() {
         <Routes>
             <Route
                 path='/'
-                element={<HomePage password = {password} handlePassword = {handlePassword}/>}
+                element={<HomePage username = {password} handleUsername = {handleUsername}/>}
             />
             <Route
                 path='/landingpage'

@@ -6,12 +6,12 @@ import Footer from "../components/Footer"
 import { useEffect } from "react";
 
 
-const HomePage = ({password, handlePassword}) => {
-    useEffect(() => handlePassword("hello"),[])
+const HomePage = ({username, handleUsername}) => {
+    useEffect(() => handleUsername("hello"),[])
     
     return (
         <Container>
-            <Header />
+            <Header username = {username} handleUsername = {handleUsername} />
             <LoginForm />
             <RegistrationForm />
             <Footer />

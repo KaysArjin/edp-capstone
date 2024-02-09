@@ -9,6 +9,7 @@ const MessageCard = ({ sender }) => {
       try {
         // Fetch message from the backend API based on userId
         console.log(sender)
+        
         const response = await fetch(`/api/message/${sender}`);
         if (!response.ok) {
           throw new Error('Failed to fetch message');

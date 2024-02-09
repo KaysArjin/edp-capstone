@@ -8,6 +8,7 @@ import ContactPage from './pages/ContactPage';
 
 function App() {
   const [count, setCount] = useState(0)
+  const [password, setPassword] = useState("")
 
   return (
     <BrowserRouter>

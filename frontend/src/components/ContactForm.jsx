@@ -28,7 +28,7 @@ const ContactForm = () => {
 
   // Function called on submit that uses emailjs to send email of valid contact form
   const onSubmit = async (data) => {
-    // Destrcture data object
+    // Destructure data object
     const { name, email, subject, message } = data;
     try {
       // Disable form while processing submission

@@ -3,7 +3,7 @@ import './App.css'
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LandingPage from './pages/LandingPage';
-import OrgChartPage from './pages/OrgChartPage';
+import SendMessagePage from './pages/SendMessagePage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
                 element={<LandingPage />}
             />
             <Route
-                path='/orgchartpage'
-                element={<OrgChartPage />}
+                path='/sendmessagepage'
+                element={<SendMessagePage />}
             />
             <Route
                 path='/contactpage'

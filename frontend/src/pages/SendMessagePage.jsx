@@ -1,17 +1,17 @@
 import { Container } from "reactstrap";
-import MessageCard from "../components/MessageCard";
+import SendCard from "../components/SendCard";
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
 
-const OrgChartPage = () => {
+const SendMessagePage = () => {
     return (
         <Container>
             <Header />
-            <MessageCard />
+            <SendCard />
             <Footer />
         </Container>
     )
 };
 
-export default OrgChartPage;
+export default SendMessagePage;

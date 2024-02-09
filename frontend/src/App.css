@@ -1,3 +1,7 @@
+h1 {
+  margin: 20px;
+}
+
 .navbar-brand {
   max-width: 4rem;
   margin-right: 2rem;
@@ -23,6 +27,7 @@ form {
 
 .formRow {
   margin: 10px 0 20px 0;
+  display: flex;
 }
 
 .formInput {

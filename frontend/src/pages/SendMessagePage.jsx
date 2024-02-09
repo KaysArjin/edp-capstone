@@ -4,7 +4,8 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 
 
-const SendMessagePage = () => {
+const SendMessagePage = ({password, handlePassword}) => {
+    useEffect(() => handlePassword("hello"),[])
     return (
         <Container>
             <Header />

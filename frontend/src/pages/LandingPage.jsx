@@ -4,11 +4,11 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 
 
-const LandingPage = () => {
+const LandingPage = ({username, handleUsername}) => {
     return (
         <Container>
             <Header />
-            <MessageCard />
+            <MessageCard username = {username} handleUsername = {handleUsername}/>
             <Footer />
         </Container>
     )

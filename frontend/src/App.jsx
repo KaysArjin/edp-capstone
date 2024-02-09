@@ -10,13 +10,15 @@ function App() {
   const [count, setCount] = useState(0)
   const [password, setPassword] = useState("")
 
+  const handlePassword = (p) => {setPassword(p)};
+
   return (
     <BrowserRouter>
     <div className='App'>       
         <Routes>
             <Route
                 path='/'
-                element={<HomePage password = {(p) => {setPassword(p)}}/>}
+                element={<HomePage password = {handlePassword}/>}
             />
             <Route
                 path='/landingpage'

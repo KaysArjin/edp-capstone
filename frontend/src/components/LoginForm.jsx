@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({username, handleUsername}) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   console.log(username)
+  const navigate = useNavigate();
 
 
 
@@ -32,6 +34,7 @@ const LoginForm = ({username, handleUsername}) => {
       // Clear form fields and error message on successful login
       setPassword('');
       setError(null);
+      navigate('/landingpage');
     } catch (error) {
       console.log(error)
       setError(error.message);

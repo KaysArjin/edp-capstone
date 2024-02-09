@@ -4,12 +4,12 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 
 
-const SendMessagePage = ({password, handlePassword}) => {
+const SendMessagePage = ({username, handleUsername}) => {
 
     return (
         <Container>
             <Header />
-            <SendCard />
+            <SendCard username = {username} handleUsername = {handleUsername}/>
             <Footer />
         </Container>
     )

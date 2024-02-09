@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = ({username, handleUsername}) => {
   // Define state variables for username, password, confirm password, and error message
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  
 
   const handleSubmit = async (e) => {
     //preventDefault prevents the form from actually submitting, giving a chance to validate
@@ -36,14 +39,16 @@ const RegistrationForm = ({username, handleUsername}) => {
       }
 
       // Clear form fields and error message on successful registration
-      setUsername('');
       setPassword('');
       setConfirmPassword('');
       setError(null);
       alert('Registration successful');
+      navigate('/landingpage');
     } catch (error) {
       setError(error.message);
     }
+
+    
   };
 
   return (
@@ -57,7 +62,7 @@ const RegistrationForm = ({username, handleUsername}) => {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => handleUsername(e.target.value)}
             required
           />
         </div>

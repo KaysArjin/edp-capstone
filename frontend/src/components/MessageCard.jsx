@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
 const MessageCard = ({username, handleUsername}) => {
-  const [message, setMessage] = useState(null);
-  console.log(username)
-
+    const [message, setMessage] = useState(null);
+    console.log(username)
+    let message_lst
   useEffect(() => {
     const fetchMessage = async () => {
       try {
@@ -12,32 +12,42 @@ const MessageCard = ({username, handleUsername}) => {
         console.log(username)
         
         const response = await fetch(`/api/message/${username}`);
-
         if (!response.ok) {
           throw new Error('Failed to fetch message');
         }
         const data = await response.json();
         
         console.log(data)
-        setMessage(data);
+        if (data.message_lst == []){
+            setMessage(['Nothing to display'])
+        }
+        else {
+        setMessage(data.message_lst);
+        }
+        console.log(message)
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchMessage();
+    
   }, []);
 
   return (
+    // <div></div>
     <div>
-      {message && (
-        <Card>
-          <CardBody>
-            <CardTitle>Message from {username}</CardTitle>
-            <CardText>{message[0].messages[0][2]}</CardText>
-          </CardBody>
+    {message.message_lst.map((messages) => (
+        <Card key={messages}>
+    
+          {/* <CardBody>
+            <CardTitle>Messages from {username}</CardTitle>
+            {messages.map((message, index) => (
+              <CardText key={index}>{message}</CardText>
+            ))}
+          </CardBody> */}
         </Card>
-      )}
+      ))}
     </div>
   );
 };

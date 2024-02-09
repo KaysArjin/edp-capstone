@@ -9,6 +9,7 @@ const MessageCard = ({username, handleUsername}) => {
     const fetchMessage = async () => {
       try {
         // Fetch message from the backend API based on username
+        console.log("username")
         console.log(username)
         
         const response = await fetch(`/api/message/${username}`);
@@ -18,6 +19,7 @@ const MessageCard = ({username, handleUsername}) => {
         }
         const data = await response.json();
         
+        console.log("in use effect")
         console.log(data)
         setMessage(data);
       } catch (error) {
@@ -34,7 +36,7 @@ const MessageCard = ({username, handleUsername}) => {
         <Card>
           <CardBody>
             <CardTitle>Message from {username}</CardTitle>
-            <CardText>{message[0].messages[0][2]}</CardText>
+            <CardText>{message}</CardText>
           </CardBody>
         </Card>
       )}

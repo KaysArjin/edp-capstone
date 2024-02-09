@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
-const MessageCard = ({ user_id }) => {
+const MessageCard = ({ sender }) => {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
     const fetchMessage = async () => {
       try {
         // Fetch message from the backend API based on userId
-        const response = await fetch(`/api/messages/${user_id}`);
+        console.log(sender)
+        const response = await fetch(`/api/message/${sender}`);
         if (!response.ok) {
           throw new Error('Failed to fetch message');
         }
@@ -21,14 +22,14 @@ const MessageCard = ({ user_id }) => {
     };
 
     fetchMessage();
-  }, [user_id]);
- // [user_id] is dependency array, which is the "independent variable" that causes react to rerender
+  }, [sender]);
+ // [sender] is dependency array, which is the "independent variable" that causes react to rerender
   return (
     <div>
       {message && (
         <Card>
           <CardBody>
-            <CardTitle>Message from {message.user_id}</CardTitle>
+            <CardTitle>Message from {message.sender}</CardTitle>
             <CardText>{message.content}</CardText>
           </CardBody>
         </Card>

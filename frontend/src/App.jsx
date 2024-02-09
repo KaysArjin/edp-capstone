@@ -11,7 +11,6 @@ function App() {
   const [username, setUsername] = useState("")
 
   const handleUsername = (u) => {setUsername(u)}; 
-
   console.log(username)
 
   return (
@@ -24,15 +23,15 @@ function App() {
             />
             <Route
                 path='/landingpage'
-                element={<LandingPage />}
+                element={<LandingPage  username = {username} handleUsername = {handleUsername}/>}
             />
             <Route
                 path='/sendmessagepage'
-                element={<SendMessagePage />}
+                element={<SendMessagePage  username = {username} handleUsername = {handleUsername}/>}
             />
             <Route
                 path='/contactpage'
-                element={<ContactPage />}
+                element={<ContactPage  username = {username} handleUsername = {handleUsername}/>}
             />
         </Routes>       
     </div>

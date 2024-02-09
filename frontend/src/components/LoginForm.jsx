@@ -4,8 +4,9 @@ const LoginForm = ({username, handleUsername}) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
+  console.log(username)
 
-  useEffect(() => handleUsername("input"), []);
+
 
   
 
@@ -16,8 +17,7 @@ const LoginForm = ({username, handleUsername}) => {
       // Send GET request to fetch user data based on username
       const response = await fetch(`/api/authentication/login/${username}/${password}`);
 
-      console.log(response)
-      console.log("here")
+      console.log(response.message_lst)
 
       if (!response.ok) {
         throw new Error('Login Credentials Incorrect');

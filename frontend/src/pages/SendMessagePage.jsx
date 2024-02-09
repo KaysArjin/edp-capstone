@@ -5,7 +5,7 @@ import Footer from "../components/Footer"
 
 
 const SendMessagePage = ({password, handlePassword}) => {
-    useEffect(() => handlePassword("hello"),[])
+
     return (
         <Container>
             <Header />

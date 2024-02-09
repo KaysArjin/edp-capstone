@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-const RegistrationForm = () => {
+const RegistrationForm = ({username, handleUsername}) => {
   // Define state variables for username, password, confirm password, and error message
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);

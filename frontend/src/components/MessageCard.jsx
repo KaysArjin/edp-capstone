@@ -22,7 +22,7 @@ const MessageCard = ({ user_id }) => {
 
     fetchMessage();
   }, [user_id]);
-
+ // [user_id] is dependency array, which is the "independent variable" that causes react to rerender
   return (
     <div>
       {message && (

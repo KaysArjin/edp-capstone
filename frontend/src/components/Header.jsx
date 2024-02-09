@@ -6,44 +6,47 @@ import {
     NavbarToggler,
     Nav, 
     NavItem,
+    Container
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import CodeBloodedLogo from '../assets/CodeBloodedLogo.png'
+import CodeBloodedLogo from '../assets/CodeBloodedLogo.png';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <Navbar dark color='primary' sticky='top' expand='md'>
-            <NavbarBrand className='ms-5' href='/'>
-                <img src={CodeBloodedLogo} alt='code blooded logo' className='float-start' />
-                <h1 className='mt-1'>Employee Feedback Portal</h1>
-            </NavbarBrand>
-            <NavbarToggler onClick={() => setMenuOpen(!menuOpen)}/>
-            <Collapse isOpen={menuOpen} navbar>
-                <Nav className='ms-auto' navbar>
-                    <NavItem>
-                        <NavLink className='nav-link' to='/'>
-                            <i className='fa fa-home fa-lg' /> Home
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink className='nav-link' to='/directory'>
-                            <i className='fa fa-list fa-lg' /> Directory
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink className='nav-link' to='/about'>
-                            <i className='fa fa-info fa-lg' /> About
-                        </NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink className='nav-link' to='/contact'>
-                            <i className='fa fa-address-card fa-lg' /> Contact
-                        </NavLink>
-                    </NavItem>
-                </Nav>
-            </Collapse>
+<Navbar dark color='primary' sticky='top' expand='md'>
+            <Container fluid>
+                <NavbarBrand href='/' className='ms-3'>
+                    <img src={CodeBloodedLogo} alt='code blooded logo' className='me-2' style={{ maxWidth: '50px' }} />
+                    Employee Feedback Portal
+                </NavbarBrand>
+                <NavbarToggler onClick={() => setMenuOpen(!menuOpen)} alt="Toggle navigation" />
+                <Collapse isOpen={menuOpen} navbar>
+                    <Nav className='ms-auto' navbar>
+                        <NavItem>
+                            <NavLink className='nav-link' to='/'>
+                                <i className='fa fa-home fa-lg' /> Home
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className='nav-link' to='/directory'>
+                                <i className='fa fa-list fa-lg' /> Directory
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className='nav-link' to='/about'>
+                                <i className='fa fa-info fa-lg' /> About
+                            </NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className='nav-link' to='/contact'>
+                                <i className='fa fa-address-card fa-lg' /> Contact
+                            </NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Container>
         </Navbar>
     );
 };

@@ -26,7 +26,7 @@ function App() {
                 element={<OrgChartPage />}
             />
             <Route
-                path='/orgchartpage'
+                path='/contactpage'
                 element={<ContactPage />}
             />
         </Routes>       

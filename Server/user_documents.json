@@ -1,16 +1,18 @@
 [    
     {
-        "user_id": "person1",
-        "pass" : "p1pass",
-        "message_lst": []
-    }, 
-    {
-        "user_id": "person2",
-        "pass" : "p2pass",
-        "message_lst": []
-    }, 
-    {
-        "user_id": "person3",
-        "message_lst": ["message_lst_1"]
-    }
+        "user_id": "person4",
+        "pass": "a",
+        "message_lst": [
+          [ "person4-person5", [ "false" ] ],
+          [ "person4-person5", [ "true" ] ]
+        ]
+      },
+      {
+        "user_id": "person5",
+        "pass": "a",
+        "message_lst": [
+          [ "person4-person5", [ "false" ] ],
+          [ "person4-person5", [ "true" ] ]
+        ]
+      }
 ]

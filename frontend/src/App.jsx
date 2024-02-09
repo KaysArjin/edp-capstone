@@ -12,13 +12,15 @@ function App() {
 
   const handlePassword = (p) => {setPassword(p)};
 
+  console.log(password)
+
   return (
     <BrowserRouter>
     <div className='App'>       
         <Routes>
             <Route
                 path='/'
-                element={<HomePage password = {handlePassword}/>}
+                element={<HomePage password = {password} handlePassword = {handlePassword}/>}
             />
             <Route
                 path='/landingpage'

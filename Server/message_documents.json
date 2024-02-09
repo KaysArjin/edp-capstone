@@ -1,10 +1,19 @@
 [    
     {
-        "msg_id": "message_lst_1",
-        "messages": ["hello how are you?", "Im doing well.", "thats good to hear"]
-    }, 
+
+        "msg_id": [ "person4-person5", [ "false" ] ],
+        "messages": [
+          [ "person4", "positive", "Hi Person 5" ],
+          [ "person5", "positive", "Hi Person 4" ],
+          [ "person4", "positive", "The messges work!!" ]
+        ]
+    },
     {
-        "msg_id": "message_lst_2",
-        "messages": ["Hi boss"]
+
+        "msg_id": [ "person4-person5", [ "true" ] ],
+        "messages": [
+          [ "person4", "positive", "Hi Person 5" ],
+          [ "person5", "positive", "New Phone Who Dis" ]
+        ]
     }
 ]

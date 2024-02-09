@@ -7,7 +7,7 @@ const MessageCard = ({ sender }) => {
   useEffect(() => {
     const fetchMessage = async () => {
       try {
-        // Fetch message from the backend API based on userId
+        // Fetch message from the backend API based on sender's id
         console.log(sender)
         
         const response = await fetch(`/api/message/${sender}`);
@@ -18,7 +18,6 @@ const MessageCard = ({ sender }) => {
         setMessage(data);
       } catch (error) {
         console.error(error);
-        // Handle errors, display error message or retry fetching
       }
     };
 

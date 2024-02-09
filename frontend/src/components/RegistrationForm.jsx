@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = ({username, handleUsername}) => {
   // Define state variables for username, password, confirm password, and error message
   const [password, setPassword] = useState('');
+  const [tempUsername, setTempUsername] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  
   
 
   const handleSubmit = async (e) => {
     //preventDefault prevents the form from actually submitting, giving a chance to validate
+    handleUsername(tempUsername)
     e.preventDefault();
 
     // Check if passwords match
@@ -61,8 +65,8 @@ const RegistrationForm = ({username, handleUsername}) => {
           <input
             type="text"
             id="username"
-            value={username}
-            onChange={(e) => handleUsername(e.target.value)}
+            value={tempUsername}
+            onChange={(e) => setTempUsername(e.target.value)}
             required
           />
         </div>

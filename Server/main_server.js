@@ -1,9 +1,10 @@
 import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
+import { PythonShell } from 'python-shell';
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 
 const url = "mongodb://127.0.0.1:27017"
@@ -52,14 +53,14 @@ app.get("/api/authentication/login/:username/:password", async (req, res) => {
   const user_collection = db.collection('users');
   const users = await user_collection.findOne({ 'user_id': id.username, 'pass': id.password });
   console.log(users)
-  if(!users){
+  if (!users) {
     res.send(401)
-  }else{
-  res.send(users)
+  } else {
+    res.send(users)
 
 
-}
-client.close();
+  }
+  client.close();
 });
 
 
@@ -95,7 +96,8 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
   const pars = req.params;
   const message = req.body.message;
 
-  console.log(message)
+  let pyshell = new PythonShell('my_script.py');
+  pyshell.send(message);
 
 
   const client = await MongoClient.connect(url);
@@ -103,7 +105,7 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
   const user_collection = db.collection('users');
   const messages_collection = db.collection('messages');
 
-  const n_id = [[pars.sender_id, pars.reciever_id].sort().join("-"),[pars.anonymous]]
+  const n_id = [[pars.sender_id, pars.reciever_id].sort().join("-"), [pars.anonymous]]
   console.log(n_id)
 
   const message_exsts = await messages_collection.findOne({ "msg_id": n_id });
@@ -111,27 +113,29 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
 
   const sender = await user_collection.findOne({ 'user_id': pars.sender_id });
 
-   if (!message_exsts && reciever && sender) {
+  if (!message_exsts && reciever && sender) {
     //this is a new conversation 
 
     //console.log(reciever)
     //console.log(sender)
-    const n_id =  [[pars.sender_id, pars.reciever_id].sort().join("-"),[pars.anonymous]]
+    const n_id = [[pars.sender_id, pars.reciever_id].sort().join("-"), [pars.anonymous]]
     console.log(n_id)
 
-     const reciever1 = await user_collection.updateOne(
-      { 'user_id': pars.reciever_id }, 
+    const reciever1 = await user_collection.updateOne(
+      { 'user_id': pars.reciever_id },
       { $push: { "message_lst": n_id } }
     );
 
-    const  sender1 = await user_collection.updateOne(
-      { 'user_id': pars.sender_id }, 
+    const sender1 = await user_collection.updateOne(
+      { 'user_id': pars.sender_id },
       { $push: { "message_lst": n_id } }
     );
 
     const message1 = await messages_collection.insertOne(
-      { "msg_id": n_id ,
-      "messages": [pars.sender_id,  req.body.message]}
+      {
+        "msg_id": n_id,
+        "messages": [pars.sender_id, req.body.message]
+      }
     );
     res.send(200)
 
@@ -141,7 +145,7 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
   }
 
   console.log(message)
-  
+
 });
 
 //const people = await collection.find().toArray();

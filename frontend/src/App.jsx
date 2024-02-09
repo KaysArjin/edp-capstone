@@ -8,9 +8,11 @@ import ContactPage from './pages/ContactPage';
 
 function App() {
   const [count, setCount] = useState(0)
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("")
 
-  const handleUsername = (p) => {setPassword(p)};
+  const handleUsername = (p) => {setUsername(p)};
+
+  console.log()
 
   console.log(password)
 
@@ -20,7 +22,7 @@ function App() {
         <Routes>
             <Route
                 path='/'
-                element={<HomePage username = {password} handleUsername = {handleUsername}/>}
+                element={<HomePage username = {username} handleUsername = {handleUsername}/>}
             />
             <Route
                 path='/landingpage'

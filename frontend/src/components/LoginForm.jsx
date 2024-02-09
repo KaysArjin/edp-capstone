@@ -45,7 +45,7 @@ const LoginForm = ({username, handleUsername}) => {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => handleUsername(e.target.value)}
             required
           />
         </div>

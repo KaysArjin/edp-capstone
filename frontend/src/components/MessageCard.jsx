@@ -62,18 +62,23 @@ const MessageCard = ({ username, handleUsername }) => {
           <p>{messageArray[0].messages[0]}</p>
           {
             messageArray.map((message_thread) => {
-              let id = message_thread.msg_id
-              let count = 0
-              message_thread.messages.map((msg) => {
-                <p> msg </p>
-                { count = count + 1 }
-              })
+              return (
+                <Card>
+                  <CardBody>
+                    {message_thread.messages.map((msg) => {
+                      { return < CardText > {msg} </CardText> }
+                      {//return (<h3>{msg}</h3>);
+                      }
+                    })}
+                  </CardBody>
+                </Card>
+              )
             })
           }
         </div>
         }
       </div>
-    </div>
+    </div >
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const RegistrationForm = ({username, handleUsername}) => {
+const RegistrationForm = ({ username, handleUsername }) => {
   // Define state variables for username, password, confirm password, and error message
   const [password, setPassword] = useState('');
   const [tempUsername, setTempUsername] = useState('');
@@ -9,12 +9,11 @@ const RegistrationForm = ({username, handleUsername}) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  
-  
+
+
 
   const handleSubmit = async (e) => {
     //preventDefault prevents the form from actually submitting, giving a chance to validate
-    handleUsername(tempUsername)
     e.preventDefault();
 
     // Check if passwords match
@@ -24,8 +23,9 @@ const RegistrationForm = ({username, handleUsername}) => {
     }
 
     try {
+      handleUsername(tempUsername)
       const response = await fetch('/api/authentication/register', {
-        method: 'POST', 
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -36,8 +36,8 @@ const RegistrationForm = ({username, handleUsername}) => {
       // Check if request was successful
       if (response.status == 401) {
         throw new Error('user already exists, pick a different username');
-      }else{
-        if (!response.ok){
+      } else {
+        if (!response.ok) {
           throw new Error('Register failed')
         }
       }
@@ -52,7 +52,7 @@ const RegistrationForm = ({username, handleUsername}) => {
       setError(error.message);
     }
 
-    
+
   };
 
   return (

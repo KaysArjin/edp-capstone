@@ -57,13 +57,9 @@ app.get("/api/authentication/login/:username/:password", async (req, res) => {
     res.send(401)
   } else {
     res.send(users)
-
-
   }
   client.close();
 });
-
-
 
 //MESSAGE GETTING AND SETTING
 app.get("/api/message/:sender_id", async (req, res) => {
@@ -84,7 +80,7 @@ app.get("/api/message/:sender_id", async (req, res) => {
 
     if (users.message_lst == 0) {
       console.log("fail")
-      res.json([""])
+      res.json([])
     } else {
       const message_list = await Promise.all(users.message_lst.map(
         message => messages_collection.findOne({ "msg_id": message })
@@ -103,6 +99,7 @@ app.get("/api/message/:sender_id", async (req, res) => {
 });
 
 app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => {
+  console.log("post")
   const pars = req.params;
   const message = req.body.message;
   let option = {
@@ -146,13 +143,27 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
       res.send(await messages_collection.findOne({ "msg_id": n_id }))
 
     } else {
-      res.send(400)
+      if (await messages_collection.findOne({ "msg_id": n_id })) {
+        console.log("message found")
+        await messages_collection.updateOne(
+          { "msg_id": n_id },
+          { $push: { "messages": [pars.sender_id, prediction, req.body.message] } }
+        );
+        let found_messages = await messages_collection.findOne({ "msg_id": n_id });
+
+        console.log(found_messages)
+        res.send(found_messages)
+
+      } else {
+        res.send(400)
+      }
     }
   });
 
 });
 
 app.put("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => {
+  console.log("put")
   const pars = req.params;
   const message = req.body.message;
   const n_id = [[pars.sender_id, pars.reciever_id].sort().join("-"), [pars.anonymous]]

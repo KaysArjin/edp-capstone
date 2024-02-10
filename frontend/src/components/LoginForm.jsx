@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = ({username, handleUsername}) => {
+const LoginForm = ({ username, handleUsername }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
@@ -10,7 +10,7 @@ const LoginForm = ({username, handleUsername}) => {
 
 
 
-  
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,8 +18,6 @@ const LoginForm = ({username, handleUsername}) => {
     try {
       // Send GET request to fetch user data based on username
       const response = await fetch(`/api/authentication/login/${username}/${password}`);
-
-      console.log(response.message_lst)
 
       if (!response.ok) {
         throw new Error('Login Credentials Incorrect');
@@ -29,11 +27,12 @@ const LoginForm = ({username, handleUsername}) => {
       // Check if password matches the one stored in the database
 
       console.log(userData)
-      
+
 
       // Clear form fields and error message on successful login
       setPassword('');
       setError(null);
+
       navigate('/landingpage');
     } catch (error) {
       console.log(error)

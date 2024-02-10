@@ -1,65 +1,78 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
+import { MapMessages } from './MapMessages';
 
 const MessageCard = ({ username, handleUsername }) => {
-  const [message, setMessage] = useState(null);
-  console.log(username)
+
+  const [messageArray, setMessageArray] = useState([]);
 
   useEffect(() => {
     const fetchMessage = async () => {
       try {
         // Fetch message from the backend API based on username
-        console.log("username")
-        console.log(username)
 
-        const response = await fetch(`/api/message/${username}`);
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch message');
-        }
-        const data = await response.json();
-
-        console.log("in use effect")
-        console.log(data)
-        setMessage(data);
+        const response = fetch(`/api/message/${username}`).then(
+          (response) => {
+            if (!response.ok) {
+              throw new Error('Failed to fetch message');
+            } else {
+              response.json().then((data) => {
+                setMessageArray(data)
+              })
+            }
+          }
+        )
       } catch (error) {
-        console.error(error);
       }
     };
+    fetchMessage()
 
-    fetchMessage();
-    console.log("mapping!!!")
-    message.map((elem) => {
-      console.log(elem)
-    })
-  }, []);
+  }, [])
+
+  /*
+  {messageArray== [] ? <h1>loading</h1> :
+            <div>
+            <p>{messageArray[0].messages[0][0]}</p>
+            <p>{messageArray[0].messages[0][1]}</p>
+            <p>{messageArray[0].messages[0][2]}</p>
+            <div>{
+            }</div>
+          </div>
+
+        messageArray.map((message_thread) => {
+          console.log(message_thread)
+
+          message_thread.messages.map((msg) => {
+            return <div className='message_container'>
+              <h3>{msg[0]}</h3>
+              <h4>{msg[1]}</h4>
+              <h4>{msg[2]}</h4>
+
+            </div>
+          })
+        })
+      }
+  */
 
   return (
     <div>
-
-      {
-        
-
-
-
-        /*
-        message.map((elem) => {
-          <Card key={index}>
-            <CardBody>
-              {
-                elem.map((val) => {
-                  val.messages.map((msg) => {
-                    <CardText>{msg}</CardText>
-                  })
-
-                }
-                )}
-            </CardBody>
-          </Card>
-        })//*/
-      }
-
-
+      <h3> Here are the messages for {`${username}`}</h3>
+      <div>
+        {messageArray.length == 0 ? <h1>loading</h1> : <div>
+          <p>{messageArray[0].messages[0]}</p>
+          {
+            messageArray.map((message_thread) => {
+              let id = message_thread.msg_id
+              let count = 0
+              message_thread.messages.map((msg) => {
+                <p> msg </p>
+                { count = count + 1 }
+              })
+            })
+          }
+        </div>
+        }
+      </div>
     </div>
   );
 };

@@ -82,10 +82,10 @@ app.get("/api/message/:sender_id", async (req, res) => {
     console.log("have obtained collections")
     console.log(users.message_lst)
 
-    if(users.message_lst == 0){
+    if (users.message_lst == 0) {
       console.log("fail")
       res.json([""])
-    }else{
+    } else {
       const message_list = await Promise.all(users.message_lst.map(
         message => messages_collection.findOne({ "msg_id": message })
       ));
@@ -105,6 +105,9 @@ app.get("/api/message/:sender_id", async (req, res) => {
 app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => {
   const pars = req.params;
   const message = req.body.message;
+  let option = {
+    scriptPath: './Server/Notebook'
+  }
   let pyshell = new PythonShell('./Server/Notebook/ps.py');
   pyshell.send(message);
 
@@ -121,8 +124,6 @@ app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => 
     } else {
       prediction = "negative"
     }
-    console.log("prediction")
-    console.log(prediction)
     const n_id = [[pars.sender_id, pars.reciever_id].sort().join("-"), [pars.anonymous]]
 
     if (!(await messages_collection.findOne({ "msg_id": n_id })) && (await user_collection.findOne({ 'user_id': pars.reciever_id })) && (await user_collection.findOne({ 'user_id': pars.sender_id }))) {
@@ -185,7 +186,7 @@ app.put("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => {
         { $push: { "messages": [pars.sender_id, prediction, req.body.message] } }
       );
       found_messages = await messages_collection.findOne({ "msg_id": n_id });
-      
+
       console.log(found_messages)
       res.send(found_messages)
 

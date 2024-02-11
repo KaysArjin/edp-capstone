@@ -15,7 +15,6 @@ const RegistrationForm = ({ username, handleUsername }) => {
   const handleSubmit = async (e) => {
     //preventDefault prevents the form from actually submitting, giving a chance to validate
     e.preventDefault();
-    console.log(tempUsername)
 
     // Check if passwords match
     if (password !== confirmPassword) {

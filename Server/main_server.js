@@ -29,7 +29,7 @@ app.post("/api/authentication/register", async (req, res) => {
   if (!users) {
     console.log("success")
     const result = await user_collection.insertOne({
-      "user_id": id.username,
+      "user_id": id.tempUsername,
       "pass": id.password,
       "message_lst": []
     });

@@ -30,7 +30,7 @@ const RegistrationForm = ({ username, handleUsername }) => {
           'Content-Type': 'application/json',
         },
         // Send username and password in JSON format in the request body
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ tempUsername, password }),
       });
 
       // Check if request was successful
@@ -66,7 +66,10 @@ const RegistrationForm = ({ username, handleUsername }) => {
             type="text"
             id="username"
             value={tempUsername}
-            onChange={(e) => setTempUsername(e.target.value)}
+            onChange={(e) => {
+              setTempUsername(e.target.value)
+              console.log(tempUsername)
+            }}
             required
           />
         </div>

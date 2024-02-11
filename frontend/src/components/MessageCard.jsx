@@ -48,7 +48,17 @@ const MessageCard = ({ username, handleUsername }) => {
                   <Card key={message_thread}>
                     <CardBody>
                       {message_thread.messages.map((msg) => {
-                        { return < CardText > {msg} </CardText> }
+                        {
+                          return (
+                            <div>
+                              < CardText > <b>From:</b> {msg[0]} </CardText>
+                              < CardText > <b>Sentiment:</b> {msg[1]} </CardText>
+                              < CardText > <b>Message: </b>{msg[2]} </CardText>
+
+                              <br />
+                            </div>
+                          )
+                        }
                         {//return (<h3>{msg}</h3>);
                         }
                       })}

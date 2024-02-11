@@ -18,11 +18,13 @@ const db = 'user_messages';
 app.post("/api/authentication/register", async (req, res) => {
   //info is sent in the body
   const id = req.body;
+  console.log("registration")
   console.log(id)
   const client = await MongoClient.connect(url);
   const db = client.db('user_messages');
   const user_collection = db.collection('users');
-  const users = await user_collection.findOne({ 'user_id': id.username });
+  const users = await user_collection.findOne({ 'user_id': id.tempUsername });
+  console.log(users)
 
   if (!users) {
     console.log("success")

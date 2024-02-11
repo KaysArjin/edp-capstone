@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = ({username, handleUsername}) => {
+const LoginForm = ({ username, handleUsername }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+
+  const [tempUsername, setTempUsername] = useState('');
 
   console.log(username)
   const navigate = useNavigate();
 
 
 
-  
+
 
   const handleSubmit = async (e) => {
+    handleUsername(tempUsername);
     e.preventDefault();
 
     try {
       // Send GET request to fetch user data based on username
-      const response = await fetch(`/api/authentication/login/${username}/${password}`);
-
-      console.log(response.message_lst)
+      const response = await fetch(`/api/authentication/login/${tempUsername}/${password}`);
 
       if (!response.ok) {
         throw new Error('Login Credentials Incorrect');
@@ -29,11 +30,12 @@ const LoginForm = ({username, handleUsername}) => {
       // Check if password matches the one stored in the database
 
       console.log(userData)
-      
+
 
       // Clear form fields and error message on successful login
       setPassword('');
       setError(null);
+
       navigate('/landingpage');
     } catch (error) {
       console.log(error)
@@ -50,8 +52,8 @@ const LoginForm = ({username, handleUsername}) => {
           <input
             type="text"
             id="username"
-            value={username}
-            onChange={(e) => handleUsername(e.target.value)}
+            value={tempUsername}
+            onChange={(e) => setTempUsername(e.target.value)}
             required
           />
         </div>

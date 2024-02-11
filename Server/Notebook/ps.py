@@ -7,16 +7,19 @@ import pathlib
 
 
 
-filename = "C:\\DEMO\\edp-capstone\\Server\\Notebook\\model.pkl"
+filename = "/Users/alessandrogagarin/Travelers/st/edp-capstone/Server/Notebook/model.pkl"
+# filename = "C:\\DEMO\\edp-capstone\\Server\\Notebook\\model.pkl"
+
+data = input()
 
 
-with open("C:\\DEMO\\edp-capstone\\Server\\Notebook\\vectorizer1.pkl",'rb') as v:
+with open("/Users/alessandrogagarin/Travelers/st/edp-capstone/Server/Notebook/vectorizer1.pkl",'rb') as v:
     X_val_tfidf = pickle.load(v)
 
 with open(filename, 'rb') as f:
     model2 = pickle.load(f)
 
-data = input()
+
 df = pd.DataFrame()
 df["text"] = [data]
 

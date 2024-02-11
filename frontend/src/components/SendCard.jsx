@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardBody, CardTitle, CardText, Button } from 'reactstrap';
 import { useNavigate } from "react-router-dom";
 
-const SendCard = ({username, handleUsername}) => {
+const SendCard = ({ username, handleUsername }) => {
   const [userId, setUserId] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,11 +23,11 @@ const SendCard = ({username, handleUsername}) => {
 
     try {
       const response = await fetch(`/api/message/${username}/${userId}/false`, {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: new URLSearchParams({'message': message}),
+        body: new URLSearchParams({ 'message': message }),
       });
 
       const j_response = await response.json();
@@ -45,16 +45,16 @@ const SendCard = ({username, handleUsername}) => {
       setLoading(false);
     }
 
-    
+
   };
 
   return (
     <div>
       <Card>
         <CardBody>
-          
+
           <div className="mb-3">
-            
+
             <input
               type="text"
               id="userId"

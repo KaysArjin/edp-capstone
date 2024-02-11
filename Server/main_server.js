@@ -69,6 +69,7 @@ app.get("/api/authentication/login/:username/:password", async (req, res) => {
 app.get("/api/message/:sender_id", async (req, res) => {
   // res.send(people);
   const id = req.params.sender_id;
+  console.log("in get message")
   console.log(id)
 
   try {
@@ -78,14 +79,24 @@ app.get("/api/message/:sender_id", async (req, res) => {
     const messages_collection = db.collection('messages');
     const users = await user_collection.findOne({ 'user_id': id });
 
+    console.log("have obtained collections")
     console.log(users.message_lst)
 
-    const message_list = await Promise.all(users.message_lst.map(
-      message => messages_collection.findOne({ "msg_id": message })
-    ));
-    console.log(message_list)
-    client.close();
-    res.json(message_list);
+    if(users.message_lst == 0){
+      console.log("fail")
+      res.json([""])
+    }else{
+      const message_list = await Promise.all(users.message_lst.map(
+        message => messages_collection.findOne({ "msg_id": message })
+      ));
+      console.log(message_list)
+      client.close();
+      res.json(message_list);
+    }
+
+
+
+
   } catch (error) {
     res.status(500).json({ error: error });
   }

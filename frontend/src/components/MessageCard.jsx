@@ -51,7 +51,15 @@ const MessageCard = ({ username, handleUsername }) => {
                         {
                           return (
                             <div>
-                              < CardText > <b>From:</b> {msg[0]} </CardText>
+
+                              {
+                                <div>
+                                  {
+                                    message_thread.msg_id[1][0] == 'false' ? < CardText > <b>From:</b> {msg[0]} </CardText> : < CardText > <b>From:</b> anonymous </CardText>
+                                  }
+                                </div>
+
+                              }
                               < CardText > <b>Sentiment:</b> {msg[1]} </CardText>
                               < CardText > <b>Message: </b>{msg[2]} </CardText>
 

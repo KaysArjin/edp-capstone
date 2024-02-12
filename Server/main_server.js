@@ -103,6 +103,7 @@ app.get("/api/message/:sender_id", async (req, res) => {
 app.post("/api/message/:sender_id/:reciever_id/:anonymous", async (req, res) => {
   console.log("post")
   const pars = req.params;
+  console.log(pars)
   const message = req.body.message;
   let option = {
     scriptPath: './Server/Notebook'

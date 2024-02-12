@@ -7,6 +7,7 @@ const SendCard = ({ username, handleUsername }) => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [anonymous, setAnonymous] = useState(false);
   const navigate = useNavigate();
 
   const handleUserIdChange = (event) => {
@@ -17,12 +18,19 @@ const SendCard = ({ username, handleUsername }) => {
     setMessage(event.target.value);
   };
 
+  const handleCheckboxChange = (e) => {
+    setAnonymous(e.target.checked)
+  }
+
+
   const sendMessage = async () => {
     setLoading(true);
     setError(null);
 
+    console.log(anonymous)
+    let anon = anonymous.toString
     try {
-      const response = await fetch(`/api/message/${username}/${userId}/false`, {
+      const response = await fetch(`/api/message/${username}/${userId}/${anonymous.toString()}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -54,16 +62,20 @@ const SendCard = ({ username, handleUsername }) => {
         <CardBody>
 
           <div className="mb-3">
-
             <input
               type="text"
               id="userId"
               value={userId}
               onChange={handleUserIdChange}
-              className="form-control"
-              placeholder="Enter recipient user ID"
             />
           </div>
+          <input
+            type="checkbox"
+            id="anonymousCheck"
+            value={userId}
+            onChange={handleCheckboxChange}
+            placeholder="Enter recipient user ID"
+          />
           <textarea
             rows={3}
             value={message}

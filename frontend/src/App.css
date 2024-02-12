@@ -2,6 +2,15 @@ h1 {
   margin: 20px;
 }
 
+.input-field{
+  width: 100% ;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .navbar-brand {
   max-width: 4rem;
   margin-right: 2rem;

@@ -65,6 +65,7 @@ const RegistrationForm = ({ username, handleUsername }) => {
           <input
             type="text"
             id="username"
+            className='input-field'
             value={tempUsername}
             onChange={(e) => {
               setTempUsername(e.target.value)
@@ -79,6 +80,7 @@ const RegistrationForm = ({ username, handleUsername }) => {
           <input
             type="password"
             id="password"
+            className='input-field'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -90,6 +92,7 @@ const RegistrationForm = ({ username, handleUsername }) => {
           <input
             type="password"
             id="confirmPassword"
+            className='input-field'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required

@@ -52,6 +52,7 @@ const LoginForm = ({ username, handleUsername }) => {
           <input
             type="text"
             id="username"
+            className='input-field'
             value={tempUsername}
             onChange={(e) => setTempUsername(e.target.value)}
             required
@@ -62,6 +63,7 @@ const LoginForm = ({ username, handleUsername }) => {
           <input
             type="password"
             id="password"
+            className='input-field'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

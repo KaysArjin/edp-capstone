@@ -17,9 +17,10 @@ const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
+        
         <Navbar dark color='primary' sticky='top' expand='md'>
             {/* <Container fluid> */}
-            <div className='container-fluid'>
+            <div className='header'>
                 <NavbarBrand href='/' className='ms-3'>
                     <img src={CodeBloodedLogo} alt='code blooded logo' className='me-2' style={{ maxWidth: '50px' }} />
                     Employee Feedback Portal

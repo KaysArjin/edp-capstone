@@ -11,6 +11,10 @@ h1 {
   border-radius: 4px;
 }
 
+.header{
+  width: 100vw;
+}
+
 .navbar-brand {
   max-width: 4rem;
   margin-right: 2rem;
